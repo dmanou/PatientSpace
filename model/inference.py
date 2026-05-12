@@ -30,7 +30,7 @@ device = (
     else "cpu"
 )
 
-model = MMMT(1, 8, 256, 256, label_dim, age_dim)
+model = MMMT(1, 8, 256, 256, 3, 1)
 
 pretrained_weights = "model/weights/pretrained_weights.pth"
 
