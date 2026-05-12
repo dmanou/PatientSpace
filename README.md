@@ -53,9 +53,9 @@ The inference pipeline generates:
 
 | File | Description |
 |---|---|
-| `prediction.npy` | Model prediction |
-| `mu.npy` | Subject latent space mean vector (`μ`) |
-| `logvar.npy` | Subject latent space log-variance vector (`log σ²`) |
+| `patientspace_classifier_pred.npy` | Model prediction |
+| `patientspace_mu.npy` | Subject latent space mean vector (`μ`) |
+| `patientspace_logvar.npy` | Subject latent space log-variance vector (`log σ²`) |
 
 All outputs are saved in:
 
