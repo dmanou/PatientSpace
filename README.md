@@ -9,7 +9,7 @@ Pytorch implementation of the paper "PatientSpace: An interpretable graph-based 
 ### 1) Clone the repository
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/dmanou/PatientSpace.git
 cd PatientSpace
 ```
 ### 2) Create Conda environment (Python 3.9.16)
