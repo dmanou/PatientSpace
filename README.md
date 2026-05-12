@@ -4,20 +4,32 @@
 
 Pytorch implementation of the paper "PatientSpace: An interpretable graph-based latent space for multimodal neuroimaging biomarker learning in Alzheimer’s Disease and Frontotemporal Dementia"
 
-## Used modules
+## Installation instruction
 
-### Training modules
+### 1) Clone the repository
 
-* Python 3.9.16
-* Pytorch 2.0.1
-* Nibabel 5.1.0
-* MONAI 1.3.0
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd PatientSpace
+```
+### 2) Create Conda environment (Python 3.9.16)
 
-### Graph modules
+```bash
+conda create -n patientspace python=3.9.16 -y
+conda activate patientspace
+```
 
-* Python 3.10.15
-* Nibabel 5.3.2
-* NetworkX 3.4.2
+### 3) Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4) PyTorch installation
+
+```bash
+pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
+```
 
 ## Run inference on a single patient
 
