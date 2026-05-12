@@ -21,17 +21,13 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--t1", type=str)
 parser.add_argument("--pet", type=str)
 parser.add_argument("--sd", type=str)
+parser.add_argument("--device", type=str)
 
-device = (
-    "cuda"
-    if torch.cuda.is_available()
-    else "mps"
-    if torch.backends.mps.is_available()
-    else "cpu"
-)
+args = parser.parse_args()
+
+device = args.device
 
 model = MMMT(1, 8, 256, 256, 3, 1)
-
 model.age_predictor.reg[0].bias = nn.Parameter(torch.tensor([0.], device = device, dtype = torch.float32))
 model.label_predictor.classif[0].bias = nn.Parameter(torch.zeros(3, device = device, dtype = torch.float32).log())
 
