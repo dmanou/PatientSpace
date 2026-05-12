@@ -32,6 +32,9 @@ device = (
 
 model = MMMT(1, 8, 256, 256, 3, 1)
 
+model.age_predictor.reg[0].bias = nn.Parameter(torch.tensor([0.], device = device, dtype = torch.float32))
+model.label_predictor.classif[0].bias = nn.Parameter(torch.zeros(3, device = device, dtype = torch.float32).log())
+
 pretrained_weights = "weights/pretrained_weights.pth"
 
 checkpoints = torch.load(pretrained_weights, map_location='cpu')
