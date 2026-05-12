@@ -1,6 +1,5 @@
 ##
 from tqdm import tqdm
-from sklearn.model_selection import train_test_split
 from glob import glob
 import numpy as np
 import nibabel as nib
@@ -12,12 +11,6 @@ from torchvision import transforms
 from torchvision import datasets
 from torch.utils.data import DataLoader
 import torch.nn.functional as F
-##
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.metrics import balanced_accuracy_score, accuracy_score, confusion_matrix, mean_squared_error
-import monai
 ##
 from model import MMMT
 import losses as losses
