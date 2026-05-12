@@ -32,7 +32,7 @@ device = (
 
 model = MMMT(1, 8, 256, 256, 3, 1)
 
-pretrained_weights = "model/weights/pretrained_weights.pth"
+pretrained_weights = "weights/pretrained_weights.pth"
 
 checkpoints = torch.load(pretrained_weights, map_location='cpu')
 model.load_state_dict(checkpoints)
