@@ -1,0 +1,62 @@
+##
+from tqdm import tqdm
+from sklearn.model_selection import train_test_split
+from glob import glob
+import numpy as np
+import nibabel as nib
+import os
+##
+import torch
+from torch import nn
+from torchvision import transforms
+from torchvision import datasets
+from torch.utils.data import DataLoader
+import torch.nn.functional as F
+##
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics import balanced_accuracy_score, accuracy_score, confusion_matrix, mean_squared_error
+import monai
+##
+from model import MMMT
+import losses as losses
+import dataloader as dataloader
+import utils
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--t1", type=str)
+parser.add_argument("--tep", type=str)
+parser.add_argument("--sd", type=str)
+
+device = (
+    "cuda"
+    if torch.cuda.is_available()
+    else "mps"
+    if torch.backends.mps.is_available()
+    else "cpu"
+)
+
+model = MMMT(1, 8, 256, 256, label_dim, age_dim)
+
+pretrained_weights = "model/weights/pretrained_weights.pth"
+
+checkpoints = torch.load(pretrained_weights, map_location='cpu')
+model.load_state_dict(checkpoints)
+
+model.to(device)
+model.eval()
+
+t1 = utils.decode(args.t1).unsqueeze(0).to(device) #add batch dim
+tep = utils.decode(args.tep).unsqueeze(0).to(device) #add batch dim
+
+with torch.no_grad():
+  rec_t1, mu_zx_t1, logvar_zx_t1, rec_tep, mu_zx_tep, logvar_zx_tep, mu_ps, logvar_ps, z_ps = model.variational_model(t1, tep)
+  logits_label = model.label_predictor(mu_ps)
+
+np.save(args.sd + "patientspace_classifier_pred.npy", logits_label.softmax(dim = 1).detach().cpu().numpy())
+np.save(args.sd + "patientspace_mu.npy", mu_ps.detach().cpu().numpy())
+np.save(args.sd + "patientspace_logvar.npy", logvar_ps.detach().cpu().numpy())
+
+
