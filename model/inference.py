@@ -21,11 +21,12 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--t1", type=str)
 parser.add_argument("--pet", type=str)
 parser.add_argument("--sd", type=str)
-parser.add_argument("--device", type=str)
+parser.add_argument("--device", type=str, default="cpu", help="Device to use: gpu or cpu")
 
 args = parser.parse_args()
 
-device = args.device
+device = "cuda" if args.device == "gpu" and torch.cuda.is_available() else "cpu"
+print(f"Using device: {device}")
 
 model = MMMT(1, 8, 256, 256, 3, 1)
 model.age_predictor.reg[0].bias = nn.Parameter(torch.tensor([0.], device = device, dtype = torch.float32))
@@ -45,9 +46,9 @@ pet = utils.decode(args.pet).unsqueeze(0).to(device) #add batch dim
 with torch.no_grad():
   rec_t1, mu_zx_t1, logvar_zx_t1, rec_pet, mu_zx_pet, logvar_zx_pet, mu_ps, logvar_ps, z_ps = model.variational_model(t1, pet)
   logits_label = model.label_predictor(mu_ps)
+  
+os.makedirs(args.sd, exist_ok=True)
 
-np.save(args.sd + "patientspace_classifier_pred.npy", logits_label.softmax(dim = 1).detach().cpu().numpy())
-np.save(args.sd + "patientspace_mu.npy", mu_ps.detach().cpu().numpy())
-np.save(args.sd + "patientspace_logvar.npy", logvar_ps.detach().cpu().numpy())
-
-
+np.save(os.path.join(args.sd, "patientspace_classifier_pred.npy"), logits_label.softmax(dim = 1).detach().cpu().numpy())
+np.save(os.path.join(args.sd, "patientspace_mu.npy"), mu_ps.detach().cpu().numpy())
+np.save(os.path.join(args.sd, "patientspace_logvar.npy"), logvar_ps.detach().cpu().numpy())
