@@ -1,6 +1,6 @@
 # PatientSpace: An interpretable graph-based latent space for multimodal neuroimaging biomarker learning in Alzheimer’s Disease and Frontotemporal Dementia
 
-![Illustration of the PatientSpace.](https://github.com/dmanou/PatientSpace/blob/main/Patientspace_figure.svg)
+![Illustration of the PatientSpace.](https://github.com/dmanou/PatientSpace/blob/main/patientspace_figure.svg)
 
 ## Overview
 
