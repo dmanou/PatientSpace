@@ -1,10 +1,10 @@
-# PatientSpace: An interpretable graph-based latent space for multimodal neuroimaging biomarker learning in Alzheimer’s Disease and Frontotemporal Dementia
+# PatientSpace: A multimodal graph-based latent representation framework for modeling neurodegenerative disease heterogeneity
 
 ![Illustration of the PatientSpace.](https://github.com/dmanou/PatientSpace/blob/main/patientspace_figure.svg)
 
 ## Overview
 
-Pytorch implementation of the paper "PatientSpace: An interpretable graph-based latent space for multimodal neuroimaging biomarker learning in Alzheimer’s Disease and Frontotemporal Dementia"
+Pytorch implementation of the paper "PatientSpace: A multimodal graph-based latent representation framework for modeling neurodegenerative disease heterogeneity"
 
 ## Installation instruction
 
