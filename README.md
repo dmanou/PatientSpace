@@ -35,8 +35,6 @@ pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https
 
 To run the inference script, you must first download the pre-trained weights.
 
-### 1) Download weights
-
 ```bash
 mkdir -p model/weights
 wget https://github.com/dmanou/PatientSpace/releases/download/v1.0.0/pretrained_weights.pth -O model/weights/pretrained_weight.pth
