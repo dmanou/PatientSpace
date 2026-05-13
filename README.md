@@ -40,6 +40,7 @@ python -m inference \
     --t1 /path/to/preprocessed_t1.nii.gz \
     --pet /path/to/preprocessed_pet.nii.gz \
     --sd /path/to/output_directory
+    --device {gpu / cpu}
 ```
 
 ### Arguments
@@ -49,6 +50,7 @@ python -m inference \
 | `--t1` | Path to the preprocessed T1 MRI |
 | `--pet` | Path to the preprocessed PET image |
 | `--sd` | Output directory where model outputs will be saved |
+| `--device` | Device to use gpu or cpu |
 
 ### Example
 
@@ -57,6 +59,7 @@ python -m inference \
     --t1 data/sub-001/t1.nii.gz \
     --pet data/sub-001/pet.nii.gz \
     --sd outputs/sub-001
+    --device gpu
 ```
 
 ### Outputs
