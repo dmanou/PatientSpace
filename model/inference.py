@@ -18,14 +18,13 @@ import utils
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--t1", type=str)
-parser.add_argument("--pet", type=str)
-parser.add_argument("--sd", type=str)
-parser.add_argument("--device", type=str, default="cpu", help="Device to use: gpu or cpu")
+parser.add_argument("--t1", type=str, help="Path to the preprocessed T1 MRI")
+parser.add_argument("--pet", type=str, help="Path to the preprocessed PET image")
+parser.add_argument("--sd", type=str, help="Output directory where model outputs will be saved")
+parser.add_argument("--use_gpu", action="store_true", help="Use GPU acceleration (default: cpu)")
 
 args = parser.parse_args()
-
-device = "cuda" if args.device == "gpu" and torch.cuda.is_available() else "cpu"
+device = "cuda" if args.use_gpu and torch.cuda.is_available() else "cpu"
 print(f"Using device: {device}")
 
 model = MMMT(1, 8, 256, 256, 3, 1)
