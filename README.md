@@ -44,6 +44,7 @@ wget https://github.com/dmanou/PatientSpace/releases/download/v1.0.0/pretrained_
 After preprocessing the T1 MRI and PET images, run:
 
 ```bash
+cd model
 python -m inference \
     --t1 /path/to/preprocessed_t1.nii.gz \
     --pet /path/to/preprocessed_pet.nii.gz \
