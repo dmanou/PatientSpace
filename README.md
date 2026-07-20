@@ -6,6 +6,15 @@
 
 Pytorch implementation of the paper "PatientSpace: A multimodal graph-based latent representation framework for modeling neurodegenerative disease heterogeneity"
 
+## Paper
+
+**Article:** https://doi.org/10.1016/j.neuroimage.2026.122136
+
+## Citation
+
+If you use this code in your research, please cite:
+XXXX
+
 ## Installation instruction
 
 ### 1) Clone the repository
