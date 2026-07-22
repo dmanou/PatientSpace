@@ -15,12 +15,14 @@ Pytorch implementation of the paper "PatientSpace: A multimodal graph-based late
 If you use this code in your research, please cite:
 ```bibtex
 @article{manouvriez2026patientspace,
-  title={PatientSpace: A multimodal graph-based latent representation framework for modeling neurodegenerative disease heterogeneity},
-  author={Manouvriez, Dorian and Kuchcinski, Gr{\'e}gory and Lecerf, Simon and Lahousse, H{\'e}l{\`e}ne and Rogeau, Antoine and Villain, Nicolas and Kas, Aur{\'e}lie and Pyatigorskaya, Nadya and Nguyen, Mathilde and Petrovic, Sonja and others},
-  journal={NeuroImage},
-  pages={122136},
-  year={2026},
-  publisher={Elsevier}
+  title     = {PatientSpace: A multimodal graph-based latent representation framework for modeling neurodegenerative disease heterogeneity},
+  author    = {Manouvriez, Dorian and Kuchcinski, Gr{\'e}gory and Lecerf, Simon and Lahousse, H{\'e}l{\`ene and Rogeau, Antoine and Villain, Nicolas and Kas, Aur{\'e}lie and Pyatigorskaya, Nadya and Nguyen, Mathilde and Petrovic, Sonja and others},
+  journal   = {NeuroImage},
+  pages      = {122136},
+  year       = {2026},
+  publisher  = {Elsevier},
+  doi        = {10.1016/j.neuroimage.2026.122136},
+  url        = {https://doi.org/10.1016/j.neuroimage.2026.122136}
 }
 ```
 ## Installation instruction
