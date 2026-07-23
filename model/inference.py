@@ -20,7 +20,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("--t1", type=str, help="Path to the preprocessed T1 MRI")
 parser.add_argument("--pet", type=str, help="Path to the preprocessed PET image")
-parser.add_argument("--pet_shape", type=type=int, nargs=3, help="Shape of the preprocessed PET image")
+parser.add_argument("--pet_shape", type=type=int, nargs=3, help="Shape of the original PET image")
 parser.add_argument("--sd", type=str, help="Output directory where model outputs will be saved")
 parser.add_argument("--use_gpu", action="store_true", help="Use GPU acceleration (default: cpu)")
 
