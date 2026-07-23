@@ -69,6 +69,7 @@ cd model
 python -m inference \
     --t1 /path/to/preprocessed_t1.nii.gz \
     --pet /path/to/preprocessed_pet.nii.gz \
+    --pet_orig /path/to/origin_pet.nii.gz \
     --sd /path/to/output_directory
 ```
 
@@ -78,7 +79,7 @@ python -m inference \
 |---|---|
 | `--t1` | Path to the preprocessed T1 MRI |
 | `--pet` | Path to the preprocessed PET image |
-| `--pet_shape` | Shape of the original PET image |
+| `--pet_orig` | Path to the original PET image |
 | `--sd` | Output directory where model outputs will be saved |
 | `--use_gpu` | Use GPU acceleration (default: cpu) |
 
@@ -88,7 +89,7 @@ python -m inference \
 python -m inference \
     --t1 data/sub-001/t1.nii.gz \
     --pet data/sub-001/pet.nii.gz \
-    --pet_shape 128 128 128 \
+    --pet_orig data/sub-001/pet_orig.nii.gz \
     --sd outputs/sub-001
     --use_gpu
 ```
