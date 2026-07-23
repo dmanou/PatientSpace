@@ -3,6 +3,7 @@ from torch import nn
 import torch.nn.functional as F
 import numpy as np
 import nibabel as nib
+from nibabel import processing
 
 def KL_DIV(q_mu, q_logvar, p_mu, p_logvar):
     return 0.5 * torch.sum(p_logvar - q_logvar - 1 + (q_mu - p_mu)**2 / (p_logvar.exp() + 1e-5) + q_logvar.exp() / (p_logvar.exp() + 1e-5), dim =-1)
