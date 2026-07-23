@@ -20,6 +20,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("--t1", type=str, help="Path to the preprocessed T1 MRI")
 parser.add_argument("--pet", type=str, help="Path to the preprocessed PET image")
+parser.add_argument("--pet_shape", type=str, help="Shape of the preprocessed PET image")
 parser.add_argument("--sd", type=str, help="Output directory where model outputs will be saved")
 parser.add_argument("--use_gpu", action="store_true", help="Use GPU acceleration (default: cpu)")
 
@@ -39,8 +40,8 @@ model.load_state_dict(checkpoints)
 model.to(device)
 model.eval()
 
-t1 = utils.decode(args.t1).unsqueeze(0).to(device) #add batch dim
-pet = utils.decode(args.pet).unsqueeze(0).to(device) #add batch dim
+t1 = utils.decode_mri(args.t1).unsqueeze(0).to(device) #add batch dim
+pet = utils.decode_pet(args.pet, args.pet_shape).unsqueeze(0).to(device) #add batch dim
 
 with torch.no_grad():
   rec_t1, mu_zx_t1, logvar_zx_t1, rec_pet, mu_zx_pet, logvar_zx_pet, mu_ps, logvar_ps, z_ps = model.variational_model(t1, pet)
